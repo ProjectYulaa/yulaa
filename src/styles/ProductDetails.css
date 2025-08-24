@@ -427,3 +427,188 @@ body {
   font-size: 16px;
   font-weight: 600;
 }
+
+/* =======================
+   Responsive for Tablet & Mobile
+   ======================= */
+@media (max-width: 1024px) {
+  .product-container {
+    grid-template-columns: 1fr;   /* stack all sections */
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  /* Image Gallery: make swipeable */
+  .product-gallery {
+    order: -1; /* show images first */
+  }
+
+  .thumbnail-list {
+    display: none; /* hide small thumbnails on mobile */
+  }
+
+  .main-image-container {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .main-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  /* Product Info */
+  .product-info {
+    margin-top: 1rem;
+  }
+
+  .product-info h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+  }
+
+  .offers-section ul {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* Purchase Box: inline with info */
+  .purchase-box {
+    position: relative;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Sticky bottom action bar */
+  .purchase-box {
+    display: none; /* hide full purchase box */
+  }
+
+  .mobile-action-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    z-index: 1000;
+  }
+
+  .mobile-action-bar button {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .mobile-action-bar .btn-cart {
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  .mobile-action-bar .btn-buy {
+    background-color: #fff4e5;
+    color: #a56b2e;
+    border: 1px solid #eccba5;
+  }
+
+  /* Tabs: turn into accordions */
+  .tab-buttons {
+    display: block;
+  }
+
+  .tab-buttons button {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    padding: 0.7rem;
+  }
+
+  .tab-content {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  /* Reviews Section */
+  .reviews-section {
+    padding: 1rem;
+  }
+
+  .review-box {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* Related products: swipe carousel */
+  .carousel {
+    gap: 0.8rem;
+    padding-bottom: 1rem;
+  }
+
+  .carousel-item {
+    min-width: 150px;
+    padding: 0.8rem;
+  }
+}
+
+/* Hide sticky bar by default (desktop), show it on tablet/mobile */
+.mobile-action-bar { display: none; }
+
+@media (max-width: 1024px) {
+  /* Tablet & Mobile: stack layout (already in your CSS) and use sticky bar */
+  .product-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hide the full purchase panel to save space; the sticky bar replaces it */
+  .purchase-box { display: none; }
+
+  /* Sticky bottom action bar */
+  .mobile-action-bar {
+    display: flex;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 1000;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    background: #fff;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .mobile-action-bar .btn-cart,
+  .mobile-action-bar .btn-buy {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+  }
+
+  .mobile-action-bar .btn-cart {
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+  }
+  .mobile-action-bar .btn-buy {
+    background: #fff4e5;
+    color: #a56b2e;
+    border: 1px solid #eccba5;
+  }
+
+  /* Prevent content being hidden behind sticky bar */
+  .product-page-wrapper { padding-bottom: 88px; }
+}

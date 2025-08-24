@@ -50,13 +50,13 @@
 }
 
 /* Image Section */
+/* Image Section */
 .home-image-section {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* always 3 columns */
+  gap: 1rem;
   padding: 2rem 1rem;
-  background-color: #f7f4ef; /* Light beige */
+  background-color: #f7f4ef;
 }
 
 .image-card {
@@ -71,8 +71,8 @@
 .image-card img {
   display: block;
   width: 100%;
-  max-width: 350px;
   height: auto;
+  object-fit: cover; /* keeps proportions */
   transition: transform 0.4s ease;
 }
 
@@ -84,6 +84,20 @@
 .image-card:hover img {
   transform: scale(1.03);
 }
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .home-image-section {
+    grid-template-columns: repeat(3, 1fr); /* still 3 across */
+    gap: 0.6rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .image-card {
+    border-radius: 0.6rem;
+  }
+}
+
 
 /* Main spacing between sections */
 main {

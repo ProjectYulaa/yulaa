@@ -308,3 +308,133 @@
     order: -1;
   }
 }
+
+/* ========== Mobile & Tablet Adjustments ========== */
+@media (max-width: 1024px) {
+  /* Stack layout (already present) */
+  .products-grid-wrap {
+    flex-direction: column;
+  }
+
+  /* Sidebar: hidden by default, toggle with button */
+  .filters-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75%;
+    max-width: 320px;
+    height: 100%;
+    background: #faf9f7;
+    padding: 1.5rem;
+    border-radius: 0; /* flat edges for drawer */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    z-index: 2000;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  /* When open, slide in */
+  .filters-sidebar.open {
+    display: block;
+    transform: translateX(0);
+  }
+
+  /* Dark overlay behind sidebar */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1500;
+  }
+  body.filters-open::after {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Filter toggle button - make it more prominent on mobile */
+  .filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #e07a5f;
+    color: #fff;
+    border-radius: 6px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .filter-toggle:hover {
+    background: #c86850;
+  }
+
+  /* Sorting select stays inline */
+  .sort-select {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Grid: switch to 2 cards per row */
+  .products-grid .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .card-image {
+    height: 180px; /* shorter images for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .btn-cart {
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Grid: single column for very small phones */
+  .products-grid .grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .card-image {
+    height: 160px;
+  }
+}
+
+.filters-sidebar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75%;
+  max-width: 320px;
+  height: 100%;
+  background: #faf9f7;
+  padding: 1.5rem;
+  border-radius: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 2000;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  touch-action: pan-y; /* allows vertical scroll + horizontal swipe */
+}
+
+.filters-sidebar.open {
+  display: block;
+  transform: translateX(0);
+}

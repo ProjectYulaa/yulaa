@@ -265,7 +265,6 @@ const ProductDetails = () => {
               <strong className="product-price">₹{product.price}</strong>
               <p className="tax-note">Inclusive of all taxes</p>
             </div>
-
 <div className="quantity-section">
   <label>Quantity:</label>
   <div className="quantity-buttons">
@@ -313,6 +312,24 @@ const ProductDetails = () => {
 
             <p className="seller-info">Sold by: Yulaa</p>
           </div>
+                      {/* Sticky Action Bar for Mobile */}
+<div className="mobile-action-bar">
+  <button
+    className="btn-cart"
+    onClick={() => addToCart(user?.uid, product, quantity)}
+    disabled={!selectedSize && product.sizes?.length > 0}
+  >
+    Add to Cart
+  </button>
+  <button
+    className="btn-buy"
+    onClick={() => handleBuyNow(product)}
+    disabled={!selectedSize && product.sizes?.length > 0}
+  >
+    Buy Now
+  </button>
+</div>
+
         </div>
 
         {/* TABS Section */}

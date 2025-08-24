@@ -1,174 +1,249 @@
-/* UniversalSlider.css */
-
-/* Main slider container */
+/* Universal Slider Wrapper */
 .universal-slider {
-  width: 100%;
-  height: 100vh; /* Full hero section */
   position: relative;
+  width: 100%;
+  max-width: 1920px;   /* keeps things clean on very wide monitors */
+  margin: 0 auto;
   overflow: hidden;
-  background: var(--color-background, #faf9f7);
 }
 
-/* Each slide */
+/* Each Slide */
 .slide-container {
-  width: 100%;
-  height: 100%;
   position: relative;
+  width: 100%;
+  height: 80vh; /* Hero-like height */
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-/* Image wrapper */
-.slide-image {
-  width: 100%;
-  height: 100%;
-}
-
+/* Slide Image */
+/* Ken Burns Effect on Slide Images */
 .slide-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* ✅ fits without cropping */
+  object-fit: cover;
   object-position: center;
-  background: var(--color-background-light, #f7f4ef);
-  transition: opacity 1s ease-in-out; /* smooth fade */
+  filter: brightness(0.8);
+  border-radius: 0;
+  
+  /* Animation */
+  transform: scale(1);
+  transition: transform 8s ease-out;
 }
 
-/* ---- TEXT OVERLAY ---- */
+/* Active Slide Zooms In */
+.slick-active .slide-image img {
+  transform: scale(1.1); /* slight zoom */
+}
+
+
+/* Slide Content (text + button) */
+/* Slide Content Animations */
 .slide-content {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 1rem 2rem;
-  border-radius: 1.5rem;
-  background: rgba(250, 249, 247, 0.7); /* soft glass effect */
-  backdrop-filter: blur(6px);
-  max-width: 80%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: #fff;
+  max-width: 600px;
+  z-index: 2;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-in-out;
 }
 
-/* Title */
+/* Active slide content shows */
+.slick-active .slide-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Headline */
 .slide-content h2 {
-  font-family: var(--font-heading, 'Merriweather', serif);
-  font-size: 2.5rem;
-  color: var(--color-primary, #588157);
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Subtitle */
 .slide-content p {
-  font-family: var(--font-body, 'Nunito', sans-serif);
-  font-size: 1.2rem;
-  color: var(--color-text-secondary, #333);
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   margin-bottom: 1.5rem;
+  color: #f4f1de;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Button */
 .slide-content a {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
-  background: var(--color-accent, #e07a5f);
+  padding: 12px 28px;
+  background: #e07a5f;
   color: #fff;
-  text-decoration: none;
+  border-radius: 50px;
   font-size: 1rem;
   font-weight: 600;
+  text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content a:hover {
-  background: var(--color-primary, #588157);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  background: #588157;
+  transform: translateY(-3px);
 }
 
-/* ---- Slick Styling ---- */
-.slick-dots {
+
+/* Slick Dots (pagination) */
+.universal-slider .slick-dots {
   bottom: 20px;
 }
 
-.slick-dots li button:before {
+.universal-slider .slick-dots li button:before {
   font-size: 12px;
-  color: var(--color-primary, #588157);
+  color: #fff;
   opacity: 0.7;
-  transition: all 0.3s ease;
 }
 
-.slick-dots li.slick-active button:before {
-  color: var(--color-accent, #e07a5f);
+.universal-slider .slick-dots li.slick-active button:before {
+  color: var(--color-accent);
   opacity: 1;
-  transform: scale(1.2);
 }
 
-.slick-prev, .slick-next {
-  z-index: 10;
+/* Slick Arrows */
+.universal-slider .slick-prev,
+.universal-slider .slick-next {
+  z-index: 3;
   width: 45px;
   height: 45px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
 }
 
-.slick-prev:before, .slick-next:before {
-  font-size: 28px;
-  color: var(--color-primary, #588157);
-  opacity: 0.8;
+.universal-slider .slick-prev:hover,
+.universal-slider .slick-next:hover {
+  background: rgba(0,0,0,0.7);
 }
 
-.slick-prev:hover:before, .slick-next:hover:before {
-  color: var(--color-accent, #e07a5f);
-  opacity: 1;
+.universal-slider .slick-prev:before,
+.universal-slider .slick-next:before {
+  font-size: 22px;
+  color: #fff;
 }
 
-/* ---- RESPONSIVENESS ---- */
-@media (max-width: 1024px) {
+/* Responsive Design */
+@media (max-width: 1200px) {
   .slide-content h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+  .slide-content p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .slide-container {
+    height: 65vh;
+  }
+  .slide-content {
+    left: 8%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide-container {
+    height: 60vh;
+  }
+  .slide-content {
+    left: 5%;
+    max-width: 80%;
+  }
+  .slide-content h2 {
+    font-size: 1.8rem;
   }
   .slide-content p {
     font-size: 1rem;
   }
   .slide-content a {
-    padding: 0.65rem 1.25rem;
-    font-size: 0.95rem;
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 768px) {
-  .universal-slider {
-    height: 70vh; /* reduce height for mobile */
+@media (max-width: 576px) {
+  .slide-container {
+    height: 50vh;
   }
   .slide-content {
-    padding: 0.8rem 1.2rem;
+    top: auto;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
     max-width: 90%;
   }
   .slide-content h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
   .slide-content p {
-    font-size: 0.9rem;
-  }
-  .slide-content a {
-    padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
 }
 
-@media (max-width: 480px) {
-  .universal-slider {
-    height: 60vh;
-  }
+/* ========================= */
+/* 📱 Mobile Responsiveness  */
+/* ========================= */
+@media (max-width: 768px) {
   .slide-content {
-    padding: 0.6rem 1rem;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 90%;
   }
+
   .slide-content h2 {
-    font-size: 1.3rem;
+    font-size: clamp(1.3rem, 4vw, 2rem);
   }
+
   .slide-content p {
-    font-size: 0.8rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
   }
+
   .slide-content a {
-    padding: 0.5rem 1rem;
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    border-radius: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* ========================= */
+/* 📱 Small Phones (<=480px) */
+/* ========================= */
+@media (max-width: 480px) {
+  .slide-content {
+    top: 65%;
+    padding: 0 10px;
+  }
+
+  .slide-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .slide-content p {
     font-size: 0.85rem;
+  }
+
+  .slide-content a {
+    font-size: 0.9rem;
   }
 }

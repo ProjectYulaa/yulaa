@@ -4,13 +4,6 @@ import "../styles/About.css";
 
 export default function About() {
   return (
-    <section className="about">
-      <div className="about-content reverse"></div>
-      <img
-        src="/images/about/aboutyulaa.png"
-        alt="About Yulaa"
-        className="about-img"
-      />
       <div className="about__text">
         <h1>About Yulaa</h1>
         <p>
@@ -20,6 +13,5 @@ export default function About() {
           your wellness with softness and science.
         </p>
       </div>
-    </section>
   );
 }

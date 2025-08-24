@@ -6,7 +6,7 @@ import "../styles/SearchBar.css";
 
 const categories = ["All", "Maternity", "Wellness", "Accessories", "Skincare"];
 
-const SearchBar = () => {
+const SearchBar = ({ onSelect }) => {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
   const [allProducts, setAllProducts] = useState([]);
@@ -67,6 +67,9 @@ const SearchBar = () => {
     navigate(`/product/${productId}`);
     setQuery("");
     setShowResults(false);
+
+     if (onSelect) onSelect();
+
   };
 
   return (

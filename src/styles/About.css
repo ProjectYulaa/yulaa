@@ -1,38 +1,9 @@
 /* src/styles/About.css */
 
-.about {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  background-color: #faf9f7; /* Off-white background */
-  padding: 4rem 2rem;
-  gap: 2rem;
-  font-family: 'Nunito', sans-serif;
-}
-
-.about.reverse {
-  flex-direction: row-reverse;
-}
-
-.about-img {
-  flex: 1 1 40%;
-  max-width: 450px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.about-img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-}
-
 .about__text {
-  flex: 1 1 50%;
   background-color: #f4f1de; /* Cream accent */
-  padding: 2rem 2.5rem;
-  border-radius: 18px;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   animation: fadeIn 0.8s ease-in-out;
 }
@@ -61,18 +32,37 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Keep side-by-side everywhere; enable smooth horizontal scroll on tiny phones */
+@media (max-width: 480px) {
   .about {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;         /* stay side-by-side */
+    flex-wrap: nowrap;           /* don't wrap */
+    overflow-x: auto;            /* allow horizontal scroll */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;  /* nice snapping */
+    gap: 1rem;
+    padding: 2rem 1rem;          /* a bit tighter padding on phones */
+    text-align: left;
   }
 
-  .about-img {
-    max-width: 100%;
+  /* Each pane takes most of the viewport width and snaps in place */
+  .about-img,
+  .about__text {
+    flex: 0 0 85vw;              /* ~85% of viewport width per pane */
+    max-width: none;             /* don't clamp to 450px here */
+    scroll-snap-align: start;
   }
+
+  .about-img { height: auto; }
 
   .about__text {
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  /* optional: subtle, slim scrollbar */
+  .about::-webkit-scrollbar { height: 6px; }
+  .about::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 999px;
   }
 }

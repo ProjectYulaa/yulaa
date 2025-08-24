@@ -14,7 +14,7 @@ const UniversalSlider = ({ slides }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-      fade: true,   // ✅ enables fade-in / fade-out
+    fade: true,   // ✅ enables fade-in / fade-out
 
   };
 

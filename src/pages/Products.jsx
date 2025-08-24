@@ -16,9 +16,10 @@ import { addToCart } from "../utils/cartUtils";
 import { AuthContext } from "../contexts/AuthContext";
 import { useBuyNow } from "../contexts/BuyNowContext";
 import { getAuth } from "firebase/auth";
+import { useRef } from "react";
 
 const Products = () => {
-  const { user } = useContext(AuthContext);
+ const { user } = useContext(AuthContext);
   const { setBuyNowProduct } = useBuyNow();
   const [products, setProducts] = useState([]);
   const [quantities, setQuantities] = useState({});
@@ -36,6 +37,47 @@ const Products = () => {
   // Pagination
   const PAGE_SIZE = 12;
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const sidebarRef = useRef(null);
+  const startX = useRef(0);
+  const currentX = useRef(0);
+  const isDragging = useRef(false);
+
+  // start swipe
+  const handleTouchStart = (e) => {
+    startX.current = e.touches[0].clientX;
+    currentX.current = startX.current;
+    isDragging.current = true;
+  };
+
+  // track swipe
+  const handleTouchMove = (e) => {
+    if (!isDragging.current) return;
+    currentX.current = e.touches[0].clientX;
+
+    const deltaX = currentX.current - startX.current;
+    if (deltaX < 0) {
+      // move sidebar left while dragging
+      sidebarRef.current.style.transform = `translateX(${deltaX}px)`;
+    }
+  };
+
+  // end swipe
+  const handleTouchEnd = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+
+    const deltaX = currentX.current - startX.current;
+
+    // if swipe left more than 80px → close
+    if (deltaX < -80) {
+      setFilterOpen(false);
+      document.body.classList.remove("filters-open");
+    } else {
+      // reset position
+      sidebarRef.current.style.transform = "translateX(0)";
+    }
+  };
+
 
   // --- 🔹 Fetch products ---
   useEffect(() => {
@@ -53,6 +95,11 @@ const Products = () => {
     };
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+  return () => document.body.classList.remove("filters-open");
+}, []);
+
 
   // --- 🔹 Real-time reviews by category ---
   useEffect(() => {
@@ -209,14 +256,25 @@ const Products = () => {
       <main className="products-page container">
         <div className="products-header">
           <div className="header-controls">
-            <button
-              className="filter-toggle"
-              onClick={() => setFilterOpen((s) => !s)}
-              aria-expanded={filterOpen}
-              aria-controls="filters"
-            >
-              <FaFilter /> Filters
-            </button>
+<button
+  className="filter-toggle"
+  onClick={() => {
+    setFilterOpen((s) => {
+      const newState = !s;
+      if (newState) {
+        document.body.classList.add("filters-open");
+      } else {
+        document.body.classList.remove("filters-open");
+      }
+      return newState;
+    });
+  }}
+  aria-expanded={filterOpen}
+  aria-controls="filters"
+>
+  <FaFilter /> Filters
+</button>
+
             <select
               className="sort-select"
               value={sortBy}
@@ -231,7 +289,24 @@ const Products = () => {
 
         <div className="products-grid-wrap">
           {/* Sidebar Filters */}
-          <aside id="filters" className={`filters-sidebar ${filterOpen ? "open" : ""}`}>
+<aside
+  ref={sidebarRef}
+  id="filters"
+  className={`filters-sidebar ${filterOpen ? "open" : ""}`}
+  onTouchStart={handleTouchStart}
+  onTouchMove={handleTouchMove}
+  onTouchEnd={handleTouchEnd}
+>
+  {/* ... filter contents ... */}
+            {filterOpen && (
+  <div
+    className="filters-overlay"
+    onClick={() => {
+      setFilterOpen(false);
+      document.body.classList.remove("filters-open");
+    }}
+  />
+)}
             <div className="filter-block">
               <h4>Category</h4>
               <ul className="filter-list">
