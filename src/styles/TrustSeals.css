@@ -1,0 +1,66 @@
+/* TrustSeals.css - Soft & Natural Lifestyle Style */
+
+.trust-seals {
+  background-color: #faf9f7; /* Soft off-white */
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(88, 129, 87, 0.08); /* Soft olive shadow */
+  max-width: 900px;
+  margin: 2rem auto;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  font-family: 'Nunito', sans-serif;
+}
+
+.trust-seals:hover {
+  box-shadow: 0 6px 16px rgba(88, 129, 87, 0.15);
+  transform: translateY(-3px);
+}
+
+.trust-title {
+  font-family: 'Merriweather', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #e07a5f; /* Olive green */
+  margin-bottom: 0.5rem;
+}
+
+.trustseal-title {
+  font-size: 1rem;
+  color: #6b705c; /* Earthy text */
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.trusticon-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.trust-icon {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(88, 129, 87, 0.08));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.trust-icon:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 6px rgba(88, 129, 87, 0.2));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .trust-title {
+    font-size: 1.4rem;
+  }
+  .trustseal-title {
+    font-size: 0.95rem;
+  }
+  .trust-icon {
+    height: 32px;
+  }
+}

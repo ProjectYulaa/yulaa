@@ -1,0 +1,113 @@
+/* src/styles/Security.css */
+
+/* Container */
+.security-container {
+  background-color: #faf9f7; /* soft off-white */
+  padding: 2rem 1.5rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Page Title */
+.security-container h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  color: #588157; /* sage green */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Sections */
+.security-section {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
+}
+
+.security-section label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 0.25rem;
+}
+
+.security-section span {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+/* Inputs */
+.security-section input {
+  border: 1px solid #e0dcd5;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  font-family: 'Quicksand', sans-serif;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.security-section input:focus {
+  border-color: #588157; /* green highlight */
+}
+
+/* Buttons */
+.security-section button {
+  background-color: #e07a5f; /* terracotta */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: flex-start;
+}
+
+.security-section button:hover {
+  background-color: #c86850;
+}
+
+.security-section button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* OTP input */
+.otp-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.otp-input input {
+  width: 50px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Error messages */
+.error-text {
+  color: #b23b3b;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .security-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .security-section {
+    padding: 0.9rem 1rem;
+  }
+}

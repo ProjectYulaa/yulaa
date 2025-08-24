@@ -1,0 +1,95 @@
+/* src/styles/TestimonialSlider.css */
+
+.testimonial-slider {
+  background-color: #faf9f7; /* soft off-white background */
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: 'Lora', serif;
+}
+
+.section-title {
+  font-family: 'Merriweather', serif;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: #588157; /* Olive Green */
+  letter-spacing: 0.5px;
+}
+
+.testimonial-card {
+  background-color: #f4f1de; /* cream accent */
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: #444;
+  position: relative;
+  padding: 0 1.5rem;
+}
+
+.testimonial-card p::before {
+  content: "“";
+  font-size: 3rem;
+  color: #e07a5f; /* terracotta */
+  position: absolute;
+  left: 0;
+  top: -10px;
+}
+
+.testimonial-card p::after {
+  content: "”";
+  font-size: 3rem;
+  color: #e07a5f;
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+}
+
+.testimonial-card h4 {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #588157;
+}
+
+/* Slick carousel overrides for soft style */
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #e07a5f; /* terracotta */
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #588157; /* olive */
+  opacity: 1;
+}
+
+/* Fade-in animation */
+.testimonial-card {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

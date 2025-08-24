@@ -1,0 +1,125 @@
+/* Product Slider Page */
+.products-page {
+  background-color: #faf9f7; /* Off-white background */
+  padding: 2rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Section Titles */
+.product-section h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  color: #e07a5f; /* Warm brown */
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f2cc8f; /* Soft peach accent */
+  padding-bottom: 0.5rem;
+}
+
+/* Product Card */
+.product-card {
+  background-color: #fffdfb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  padding: 1rem;
+  margin: 0 0.5rem;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Product Image */
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+}
+
+/* Wishlist Icon */
+.wishlist-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #e07a5f; /* Terracotta */
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.wishlist-icon:hover {
+  color: #d5694d;
+  transform: scale(1.1);
+}
+
+/* Product Details */
+.product-details {
+  padding-top: 0.5rem;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5a4634;
+  margin-bottom: 0.3rem;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: #588157; /* Olive green for price */
+  margin: 0.4rem 0;
+}
+
+/* Action Buttons */
+.product-actions {
+  margin-top: 0.8rem;
+}
+
+.btn-cart {
+  background-color: #e07a5f; /* Terracotta */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cart:hover {
+  background-color: #d5694d;
+}
+
+/* Slider Overrides */
+.slick-slide {
+  padding: 0.5rem;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 1;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #588157; /* Olive green */
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    margin: 0 auto;
+    max-width: 300px;
+  }
+
+  .product-image {
+    height: 180px;
+  }
+}

@@ -1,0 +1,69 @@
+/* styles/TermsOfService.css */
+
+/* Base styles for the page */
+.terms-container {
+  background-color: #faf9f7; /* Off-white background */
+  color: #3e3e3e; /* Soft text */
+  font-family: 'Lora', serif;
+  padding: 2rem 1rem;
+  line-height: 1.7;
+}
+
+/* Main title */
+.terms-container h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.2rem;
+  color: #e07a5f; /* Olive Green */
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Section headings */
+.terms-container h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.4rem;
+  color: #e07a5f; /* Terracotta */
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraphs */
+.terms-container p {
+  color: #4a4a4a;
+  font-size: 1rem;
+  background-color: #f7f4ef; /* Light beige background for better readability */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  margin-bottom: 1.5rem;
+}
+
+/* Links */
+.terms-container a {
+  color: #e07a5f;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.terms-container a:hover {
+  color: #588157;
+  text-decoration: underline;
+}
+
+/* Layout refinements */
+.terms-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0dedb;
+}
+
+/* Smooth fade-in animation */
+.terms-container {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

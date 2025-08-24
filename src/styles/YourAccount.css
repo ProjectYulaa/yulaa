@@ -1,0 +1,93 @@
+/* src/styles/YourAccount.css */
+
+/* Main container */
+.your-account-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #faf9f7; /* Soft off-white */
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Heading */
+.your-account-container h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #588157; /* Olive green */
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  text-align: center;
+  color: #7d7d7d;
+  margin-bottom: 2rem;
+}
+
+/* Account Grid */
+.account-grid-section {
+  display: flex;
+  justify-content: center;
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Account Item Cards */
+.account-item {
+  background-color: #f4f1de; /* Creamy soft tone */
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e5e5e5;
+}
+
+.account-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  background-color: #f2cc8f; /* Soft peach hover */
+}
+
+/* Icon Styling */
+.icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #e07a5f; /* Terracotta */
+}
+
+/* Title & Description */
+.account-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #588157;
+  margin-bottom: 0.3rem;
+}
+
+.account-item p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Mobile Optimization */
+@media (max-width: 600px) {
+  .your-account-container {
+    padding: 1rem;
+  }
+  
+  .account-item {
+    padding: 1rem;
+  }
+  
+  .account-item h4 {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,56 @@
+
+* {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Quicksand:wght@500;700&family=Lora:wght@400;600&family=Nunito:wght@400;600&display=swap');
+
+:root {
+  --color-primary: #e07a5f; /* Terracotta */
+  --color-secondary: #588157; /* Olive Green */
+  --color-accent: #f2cc8f; /* Soft Peach */
+  --color-cream: #f4f1de; /* Cream */
+  --color-background: #faf9f7; /* Off-white */
+  --color-background-light: #f7f4ef; /* Light beige */
+  --color-text-primary: #3a3a3a;
+  --color-text-secondary: #5f5f5f;
+  --color-border: #ddd8d3;
+  --font-heading: 'Merriweather', serif;
+  --font-heading-alt: 'Quicksand', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+/* General Layout with Texture */
+body {
+  background: var(--color-background) url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-size: 300px 300px;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+}
+
+/* Global container for consistent page layout */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Prevent large images or videos from overflowing */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}

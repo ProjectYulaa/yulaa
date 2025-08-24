@@ -1,0 +1,135 @@
+/* Payments.css — Soft & Natural Lifestyle Theme */
+
+.payments-page {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fdfbf7; /* soft cream */
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-family: "Inter", sans-serif;
+  color: #4b4b4b;
+}
+
+.payments-page h2,
+.payments-page h3 {
+  font-weight: 600;
+  color: #3d3b36;
+  margin-bottom: 1rem;
+}
+
+.billing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.billing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fffefc;
+  border: 1px solid #eae6df;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.billing-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.default-badge {
+  background: #b6d6c8;
+  color: #2f4f4f;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+  margin-left: 0.5rem;
+}
+
+.billing-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.default-btn,
+.delete-btn,
+.add-btn {
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.default-btn {
+  background: #d9ead3;
+  color: #2f4f4f;
+}
+
+.default-btn:hover {
+  background: #c2dbbc;
+}
+
+.delete-btn {
+  background: #fce8e6;
+  color: #a33a36;
+}
+
+.delete-btn:hover {
+  background: #f8d2cf;
+}
+
+.add-btn {
+  background: #b6d6c8;
+  color: #2f4f4f;
+  font-weight: 500;
+}
+
+.add-btn:disabled {
+  background: #e6e6e6;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.add-btn:hover:not(:disabled) {
+  background: #a3cbb9;
+}
+
+.add-method-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.add-method-form input,
+.add-method-form select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ddd8cf;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #fffefc;
+}
+
+.add-method-form input:focus,
+.add-method-form select:focus {
+  outline: none;
+  border-color: #b6d6c8;
+  box-shadow: 0 0 0 3px rgba(182, 214, 200, 0.3);
+}
+
+.input-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.error-text {
+  color: #b94a48;
+  font-size: 0.85rem;
+  margin: -0.4rem 0 0.4rem 0;
+}

@@ -1,0 +1,64 @@
+/* src/styles/Footer.css */
+.footer {
+  background-color: #f7f4ef; /* Soft beige background */
+  color: #588157; /* Olive Green text */
+  padding: 2rem;
+  text-align: center;
+  border-top: 3px solid #e07a5f; /* Terracotta accent border */
+  font-family: 'Lora', serif; /* Warm readable serif */
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  
+  /* Optional botanical texture background */
+  /* background-image: url('/textures/paper-grain.png'); 
+     background-size: cover;
+     background-blend-mode: multiply; */
+}
+
+.footer h4 {
+  font-family: 'Merriweather', serif; /* Friendly serif for headings */
+  color: #e07a5f; /* Terracotta */
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.footer ul li {
+  margin: 0.3rem 0;
+}
+
+.footer ul li a {
+  color: #588157;
+  text-decoration: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: #e07a5f;
+  padding-left: 4px;
+}
+
+.footer p {
+  font-size: 0.9rem;
+  color: #555;
+  font-family: 'Nunito', sans-serif;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(224, 224, 224, 0.6);
+  padding-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 1.5rem;
+  }
+  .footer h4 {
+    font-size: 1.3rem;
+  }
+}

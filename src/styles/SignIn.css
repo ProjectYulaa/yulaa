@@ -1,0 +1,106 @@
+/* src/styles/SignIn.css */
+
+.signin-container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #faf9f7; /* Off-white background */
+  padding: 2rem;
+}
+
+.signin-form {
+  background: #f7f4ef; /* Light beige */
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  font-family: 'Nunito', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signin-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.signin-form h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  color: #588157; /* Olive green */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e0dcd2;
+  border-radius: 0.75rem;
+  background-color: #fffdf9;
+  font-size: 1rem;
+  font-family: 'Nunito', sans-serif;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #e07a5f; /* Terracotta */
+  box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.2);
+}
+
+.signin-button {
+  width: 100%;
+  background-color: #e07a5f; /* Terracotta */
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Nunito', sans-serif;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signin-button:hover {
+  background-color: #d2694b; /* Slightly darker terracotta */
+  transform: translateY(-1px);
+}
+
+.forget-button {
+  margin-top: 0.8rem;
+  background: none;
+  border: none;
+  color: #588157; /* Olive green */
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.forget-button:hover {
+  color: #3e5d46; /* Darker olive */
+  text-decoration: underline;
+}
+
+.signin-form a {
+  color: #588157; /* Olive green */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signin-form a:hover {
+  color: #3e5d46; /* Darker olive */
+  text-decoration: underline;
+}
+
+.signin-form div {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #444;
+}

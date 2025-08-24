@@ -1,0 +1,497 @@
+/* ===============================
+   Admin.css - Soft & Natural Lifestyle with Texture
+   =============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Quicksand:wght@500;700&family=Lora:wght@400;600&family=Nunito:wght@400;600&display=swap');
+
+:root {
+  --color-primary: #e07a5f; /* Terracotta */
+  --color-secondary: #588157; /* Olive Green */
+  --color-accent: #f2cc8f; /* Soft Peach */
+  --color-cream: #f4f1de; /* Cream */
+  --color-background: #faf9f7; /* Off-white */
+  --color-background-light: #f7f4ef; /* Light beige */
+  --color-text-primary: #3a3a3a;
+  --color-text-secondary: #5f5f5f;
+  --color-border: #ddd8d3;
+  --font-heading: 'Merriweather', serif;
+  --font-heading-alt: 'Quicksand', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+/* General Layout with Texture */
+body {
+  background: var(--color-background) url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-size: 300px 300px;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+}
+
+/* Containers */
+.admin-home, 
+.admin-section, 
+.orders-admin, 
+.products-admin {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  background: rgba(250, 249, 247, 0.96);
+  border-radius: 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+  backdrop-filter: blur(1px);
+}
+
+/* Headings */
+.admin-home h2,
+.admin-section h2,
+.orders-admin h2,
+.products-admin h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Section Buttons */
+.section-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.admin-btn {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-cream);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+}
+
+.admin-btn:hover {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Modal (Login) */
+.admin-modal {
+  max-width: 420px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--color-background-light) url('https://www.transparenttextures.com/patterns/linen.png');
+  background-size: 250px 250px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  animation: fadeIn 0.4s ease;
+}
+
+.admin-modal h2 {
+  text-align: center;
+  font-family: var(--font-heading-alt);
+  color: var(--color-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.admin-modal input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.admin-modal button {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--color-primary);
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.admin-modal button:hover {
+  background: var(--color-secondary);
+}
+
+.back-btn {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+/* Admin Actions */
+.admin-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-actions button {
+  padding: 0.6rem 1rem;
+  border: none;
+  background: var(--color-secondary);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.admin-actions button:hover {
+  background: var(--color-primary);
+}
+
+/* Cards */
+.query-card, 
+.order-card, 
+.product-card, 
+.user-card, 
+.testimonial-card {
+  background: var(--color-cream) url('https://www.transparenttextures.com/patterns/fabric-of-squares.png');
+  background-size: 200px 200px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.query-card:hover, 
+.order-card:hover, 
+.product-card:hover, 
+.user-card:hover, 
+.testimonial-card:hover {
+  transform: translateY(-2px);
+}
+
+.query-card p, 
+.order-card p, 
+.product-card p, 
+.user-card p, 
+.testimonial-card p {
+  font-size: 0.95rem;
+  margin: 0.4rem 0;
+  color: var(--color-text-secondary);
+}
+
+.query-card strong,
+.order-card strong {
+  color: var(--color-text-primary);
+}
+
+.query-card button,
+.order-card button,
+.product-card button,
+.user-card button,
+.testimonial-card button {
+  padding: 0.5rem 0.8rem;
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.query-card button:hover,
+.order-card button:hover,
+.product-card button:hover,
+.user-card button:hover,
+.testimonial-card button:hover {
+  background: var(--color-secondary);
+}
+
+/* Products Grid */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card img.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+
+/* Forms */
+.form input,
+.form textarea,
+.add-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: white;
+}
+
+.form button,
+.add-form button {
+  padding: 0.8rem 1rem;
+  border: none;
+  background: var(--color-secondary);
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form button:hover,
+.add-form button:hover {
+  background: var(--color-primary);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-actions {
+    flex-direction: column;
+  }
+}
+
+/* === Respond Box === */
+.respond-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f7f4ef;
+  border: 1px solid #e0dcd2;
+  border-radius: 8px;
+}
+
+.respond-box label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.respond-box select {
+  margin-left: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  font-size: 0.9rem;
+  background: white;
+}
+
+.respond-box textarea {
+  width: 100%;
+  margin-top: 0.7rem;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  resize: vertical;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* === Submit & Cancel Buttons in Respond Box === */
+.respond-box button {
+  margin-right: 0.5rem;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.respond-box button:first-of-type {
+  background: #588157; /* Submit */
+  color: white;
+}
+
+.respond-box button:first-of-type:hover {
+  background: #3f6143;
+}
+
+.respond-box button:last-of-type {
+  background: #ccc; /* Cancel */
+  color: #333;
+}
+
+.respond-box button:last-of-type:hover {
+  background: #aaa;
+}
+
+/* src/styles/Admin.css */
+.orders-admin {
+  padding: 2rem;
+  background: var(--color-bg);
+}
+
+.orders-admin h2 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.admin-actions button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease;
+}
+
+.admin-actions button:hover {
+  background: #3d5a40; /* darker olive */
+}
+
+.orders-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.order-card {
+  background: var(--color-cream) url('https://www.transparenttextures.com/patterns/fabric-of-squares.png');
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+}
+
+.order-card h3 {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.order-card p {
+  margin: 0.3rem 0;
+  color: var(--color-text-muted);
+}
+
+.order-card strong {
+  color: var(--color-text);
+}
+
+.order-card h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--color-primary);
+}
+
+.order-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-card li {
+  background: #fff;
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+}
+
+label {
+  display: block;
+  margin-top: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+select,
+textarea {
+  margin-top: 0.4rem;
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--color-text);
+  transition: border-color 0.3s ease;
+}
+
+select:focus,
+textarea:focus {
+  border-color: var(--color-secondary);
+  outline: none;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+button {
+  cursor: pointer;
+}
+
+.order-card button {
+  margin-top: 0.6rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: #333;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease;
+}
+
+.order-card button:hover {
+  background: #ddb873; /* slightly deeper peach */
+}
+
+/* Special styling for "Make an exemption" button */
+.order-card button:nth-of-type(1) {
+  background: var(--color-secondary);
+  color: #fff;
+}
+
+.order-card button:nth-of-type(1):hover {
+  background: #c45a48; /* deeper terracotta */
+}

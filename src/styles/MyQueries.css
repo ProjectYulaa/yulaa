@@ -1,0 +1,104 @@
+/* ========= PAGE LAYOUT ========= */
+.my-queries-section {
+  background-color: #faf9f7; /* soft off-white */
+  padding: 3rem 1.5rem;
+  font-family: 'Nunito', sans-serif;
+  color: #333;
+  min-height: 80vh;
+  animation: pageFadeIn 1.2s ease-out;
+}
+
+.my-queries-section h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #588157; /* olive green */
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* ========= EMPTY STATE ========= */
+.my-queries-section p {
+  font-size: 1.05rem;
+  text-align: center;
+  color: #666;
+}
+
+/* ========= QUERY LIST ========= */
+.query-list {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ========= QUERY CARD ========= */
+.query-card {
+  background-color: #f4f1de; /* soft cream */
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeSlideIn 0.8s ease-out;
+}
+
+.query-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* ========= CARD TEXT ========= */
+.query-card p {
+  margin: 0.4rem 0;
+  font-size: 0.98rem;
+  color: #444;
+}
+
+.query-card strong {
+  color: #e07a5f; /* terracotta */
+  font-weight: 600;
+}
+
+.query-card small {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* ========= ANIMATIONS ========= */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 768px) {
+  .my-queries-section {
+    padding: 2rem 1rem;
+  }
+
+  .query-card {
+    padding: 1.2rem;
+  }
+}

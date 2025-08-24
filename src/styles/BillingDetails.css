@@ -1,0 +1,146 @@
+/* styles/BillingDetails.css */
+
+.billing-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #faf9f7; /* soft off-white background */
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  font-family: 'Nunito', sans-serif;
+  color: #333;
+}
+
+.billing-container h2,
+.billing-container h3 {
+  font-family: 'Merriweather', serif;
+  font-weight: 600;
+  color: #588157; /* olive green */
+  margin-bottom: 1rem;
+}
+
+.billing-container p {
+  color: #555;
+  line-height: 1.5;
+}
+
+.billing-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.billing-container li {
+  background-color: #f7f4ef;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.3s ease;
+}
+
+.billing-container li:hover {
+  background-color: #f4f1de;
+}
+
+.billing-container label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.billing-container input[type="radio"] {
+  accent-color: #e07a5f; /* terracotta radio button */
+}
+
+.billing-container select,
+.billing-container input[type="text"] {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.billing-container select:focus,
+.billing-container input[type="text"]:focus {
+  border-color: #e07a5f;
+  box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.2);
+  outline: none;
+}
+
+.billing-container button {
+  background-color: #e07a5f; /* terracotta */
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.billing-container button:hover {
+  background-color: #d16955;
+  transform: translateY(-1px);
+}
+
+.billing-container button:active {
+  transform: translateY(1px);
+}
+
+.billing-container hr {
+  border: none;
+  height: 1px;
+  background-color: #e0dedb;
+}
+
+.billing-container .default-address {
+  background-color: #f2cc8f; /* soft peach for highlight */
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.billing-container .message {
+  color: #d9534f;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.billing-container .icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.billing-container .icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.billing-container .address-form {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f4f1de;
+  border-radius: 12px;
+}
+
+.billing-container .address-form input {
+  background-color: #fff;
+}
+
+.billing-container .place-order-btn {
+  background-color: #588157; /* olive green */
+}
+
+.billing-container .place-order-btn:hover {
+  background-color: #4b6c4a;
+}

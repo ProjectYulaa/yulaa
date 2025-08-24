@@ -1,0 +1,142 @@
+/* PAbout.css - Soft & Natural Lifestyle */
+
+.about-page {
+  background-color: #faf9f7; /* Soft off-white */
+  font-family: 'Nunito', sans-serif;
+  color: #6b705c; /* Earthy text tone */
+}
+
+/* Main Section Layout */
+.about-main {
+  padding: 2rem;
+}
+
+/* Section Styling */
+.about-section {
+  padding: 3rem 0;
+}
+
+.about-section.reverse .about-content {
+  flex-direction: row-reverse;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(88, 129, 87, 0.08);
+  background-color: #f7f4ef; /* Light beige backdrop */
+  transition: transform 0.3s ease;
+}
+
+.about-img:hover {
+  transform: scale(1.02);
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-family: 'Merriweather', serif;
+  color: #e07a5f; /* Olive green */
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-text p,
+.about-text blockquote {
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.about-text blockquote {
+  font-style: italic;
+  background-color: #f4f1de;
+  padding: 1rem 1.5rem;
+  border-left: 5px solid #e07a5f; /* Terracotta */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Values Section */
+.values-section {
+  background-color: #f7f4ef;
+  padding: 3rem 1rem;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(88, 129, 87, 0.06);
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.section-title {
+  font-family: 'Merriweather', serif;
+  color: #e07a5f;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.value-card {
+  background-color: #faf9f7;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(88, 129, 87, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(88, 129, 87, 0.12);
+}
+
+.value-card h3 {
+  font-family: 'Quicksand', sans-serif;
+  color: #588157;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.value-card strong {
+  color: #e07a5f;
+}
+
+.value-card p {
+  font-size: 0.95rem;
+  color: #6b705c;
+  line-height: 1.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-section.reverse .about-content {
+    flex-direction: column;
+  }
+
+  .about-img {
+    max-width: 100%;
+  }
+
+  .about-text h2 {
+    font-size: 1.6rem;
+  }
+}

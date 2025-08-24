@@ -1,0 +1,153 @@
+/* ===============================
+   Home Page – Soft & Natural Lifestyle Style
+   =============================== */
+
+/* Smooth fade + upward slide for scroll animations */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-fade.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeSlideIn 0.8s ease-out forwards;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  background-color: #faf9f7; /* Soft beige background */
+  color: #2f3e46;
+}
+
+.page-title h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #e07a5f; /* Olive Green */
+}
+
+.page-title p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.15rem;
+  color: #6b705c; /* Soft muted green */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Image Section */
+.home-image-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding: 2rem 1rem;
+  background-color: #f7f4ef; /* Light beige */
+}
+
+.image-card {
+  display: block;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+.image-card img {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  transition: transform 0.4s ease;
+}
+
+.image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.image-card:hover img {
+  transform: scale(1.03);
+}
+
+/* Main spacing between sections */
+main {
+  background-color: #faf9f7;
+}
+
+main section {
+  padding: 3rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-title h1 {
+    font-size: 2rem;
+  }
+  .page-title p {
+    font-size: 1rem;
+  }
+  .home-image-section {
+    gap: 0.8rem;
+    padding: 1.5rem 0.5rem;
+  }
+}
+
+/* Page load animation - smooth, soft & natural */
+@keyframes softPageLoad {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Scroll reveal animation */
+@keyframes softScrollReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Apply to whole page content */
+.page-fade {
+  animation: softPageLoad 1.2s ease-out;
+}
+
+/* Apply to individual sections that reveal on scroll */
+.scroll-fade {
+  opacity: 0;
+  animation: softScrollReveal 0.8s ease-out forwards;
+}
+
+/* Triggered when the section is in view */
+.scroll-fade.in-view {
+  opacity: 1;
+}

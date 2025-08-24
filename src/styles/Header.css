@@ -1,0 +1,166 @@
+/* src/styles/Header.css */
+.header-container {
+  position: relative;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.header-container.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+/* ===== Container ===== */
+.header-container {
+  background-color: #faf9f7; /* Off-white background */
+  font-family: 'Nunito', sans-serif;
+  border-bottom: 2px solid #e07a5f; /* Terracotta accent */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Top Banner ===== */
+.header-top-row {
+  background-color: #e07a5f; /* Soft Peach */
+  color: #5a4634; /* Warm brown for text */
+  text-align: center;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+/* ===== Main Top Row ===== */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e07a5f; /* Terracotta */
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #588157; /* Olive green */
+}
+
+/* Navigation Links */
+.nav-link {
+  margin: 0 0.6rem;
+  color: #5a4634;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, padding-bottom 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #e07a5f;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #e07a5f;
+}
+
+/* Cart Icon */
+.cart-icon {
+  position: relative;
+}
+
+.cart-count {
+  background-color: #e07a5f;
+  color: #fff;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 2px 5px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+}
+
+/* ===== Bottom Row ===== */
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 2rem;
+  background-color: #f7f4ef; /* Light beige */
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Location Button */
+.delivery-btn {
+  background-color: #f4f1de; /* Cream */
+  color: #5a4634;
+  border: 1px solid #e0dcd3;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.delivery-btn:hover {
+  background-color: #f2cc8f; /* Soft peach */
+  border-color: #e07a5f;
+}
+
+/* ===== Account Dropdown ===== */
+.account-dropdown {
+  position: relative;
+}
+
+.account-label {
+  background: none;
+  border: none;
+  color: #5a4634;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #faf9f7;
+  border: 1px solid #e0dcd3;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 0;
+  min-width: 150px;
+  z-index: 100;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: #5a4634;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f2cc8f; /* Soft peach hover */
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .header-bottom {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}

@@ -1,0 +1,322 @@
+/* ================================
+   Checkout Page - Soft & Natural Lifestyle Style
+   ================================ */
+
+.checkout-container {
+  background-color: #faf9f7; /* soft off-white */
+  padding: 2rem;
+  font-family: 'Nunito', sans-serif;
+  color: #333;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-title h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  color: #588157; /* olive green */
+  margin-bottom: 0.5rem;
+}
+
+.page-title p {
+  font-size: 1rem;
+  color: #555;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Address Section */
+.address-section h3 {
+  font-family: 'Merriweather', serif;
+  color: #e07a5f; /* terracotta */
+  margin-bottom: 1rem;
+}
+
+.address-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.address-card {
+  background: #ffffff;
+  border: 1px solid #e4e1db;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.address-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.address-card.default {
+  border: 2px solid #588157;
+}
+
+.address-actions {
+  margin-top: 0.8rem;
+}
+
+.address-actions button {
+  background: #f4f1de;
+  border: none;
+  color: #333;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.address-actions button:hover {
+  background: #f2cc8f;
+}
+
+/* Address Form */
+.address-form {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  margin-top: 1rem;
+}
+
+.address-form input,
+.address-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #dcd7c9;
+  background: #faf9f7;
+  font-size: 0.95rem;
+}
+
+.address-form textarea {
+  resize: vertical;
+}
+
+.address-form button {
+  background: #588157;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.address-form button:hover {
+  background: #43624f;
+}
+
+/* Add Address Button */
+.add-address-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #e07a5f;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.add-address-btn:hover {
+  background: #c9644c;
+}
+
+/* Payment Section */
+.payment-section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.payment-section h3 {
+  color: #e07a5f;
+  font-family: 'Merriweather', serif;
+  margin-bottom: 1rem;
+}
+
+.payment-section button {
+  display: inline-block;
+  background: #f4f1de;
+  border: 1px solid #dcd7c9;
+  padding: 0.6rem 1rem;
+  margin-right: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.payment-section button:hover {
+  background: #f2cc8f;
+}
+
+.cod-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #faf3e0;
+  border: 1px solid #e4d7c3;
+}
+
+.place-order-button {
+  margin-top: 0.8rem;
+  background: #588157;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.place-order-button:hover {
+  background: #43624f;
+}
+
+/* Cart Summary Box */
+.cart-summary-box {
+  margin-top: 2rem;
+}
+
+/* Smooth fade-in animations */
+.checkout-container,
+.address-card,
+.address-form,
+.payment-section {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   Responsive Styles - Soft & Natural Lifestyle
+   ================================ */
+
+/* Tablet adjustments (up to 992px) */
+@media (max-width: 992px) {
+  .checkout-container {
+    padding: 1.5rem;
+  }
+
+  .page-title h1 {
+    font-size: 1.6rem;
+  }
+
+  .address-list {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-section button {
+    margin-bottom: 0.6rem;
+  }
+}
+
+/* Mobile adjustments (up to 600px) */
+@media (max-width: 600px) {
+  .checkout-container {
+    padding: 1rem;
+  }
+
+  .page-title h1 {
+    font-size: 1.4rem;
+  }
+
+  .page-title p {
+    font-size: 0.9rem;
+  }
+
+  .address-card {
+    padding: 0.8rem;
+  }
+
+  .address-actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .address-actions button {
+    margin-bottom: 0.4rem;
+    width: 100%;
+  }
+
+  .address-form {
+    padding: 1rem;
+  }
+
+  .address-form input,
+  .address-form textarea {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .add-address-btn {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .payment-section {
+    padding: 1rem;
+  }
+
+  .payment-section button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .cod-box {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .place-order-button {
+    width: 100%;
+    padding: 0.6rem;
+  }
+
+  .cart-summary-box {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Very small devices (up to 400px) */
+@media (max-width: 400px) {
+  .page-title h1 {
+    font-size: 1.2rem;
+  }
+
+  .page-title p {
+    font-size: 0.85rem;
+  }
+
+  .address-card p,
+  .cod-box p {
+    font-size: 0.85rem;
+  }
+
+  .address-form input,
+  .address-form textarea {
+    font-size: 0.85rem;
+  }
+}

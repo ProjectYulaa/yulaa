@@ -1,0 +1,105 @@
+/* SignUp.css - Soft & Natural Lifestyle Style */
+
+:root {
+  --primary-color: #588157; /* Olive Green */
+  --secondary-color: #e07a5f; /* Terracotta */
+  --accent-color: #f2cc8f; /* Soft Peach */
+  --background-color: #faf9f7; /* Off-white */
+  --card-color: #f7f4ef; /* Light beige */
+  --text-primary: #3a3a3a; /* Dark warm gray */
+  --text-secondary: #6b6b6b;
+  --font-heading: 'Merriweather', serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: var(--font-body);
+}
+
+.signup-container {
+  max-width: 420px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: var(--card-color);
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.signup-container h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.signup-form input {
+  padding: 0.85rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.signup-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px rgba(88, 129, 87, 0.3);
+}
+
+.signup-form button {
+  padding: 0.9rem;
+  background: var(--primary-color);
+  color: white;
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.signup-form button:hover {
+  background: #446644;
+  transform: translateY(-2px);
+}
+
+.signup-form p {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.signup-form p a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-form p a:hover {
+  text-decoration: underline;
+}
+
+/* Soft fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .signup-container {
+    margin: 2rem 1rem;
+    padding: 2rem;
+  }
+}
