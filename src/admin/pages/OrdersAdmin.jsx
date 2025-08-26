@@ -13,16 +13,19 @@ import { toast } from "react-hot-toast";
 import * as XLSX from "xlsx";
 import { useNavigate } from "react-router-dom";
 import "../../styles/Admin.css";
+import AdminLogin from "../AdminLogin";
 
 const OrdersAdmin = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [verified, setVerified] = useState(false);
 
   // local pending updates before submit
   const [pendingUpdates, setPendingUpdates] = useState({});
 
   useEffect(() => {
+     if (!verified) return; 
     const fetchOrders = async () => {
       try {
         const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
@@ -40,7 +43,11 @@ const OrdersAdmin = () => {
     };
 
     fetchOrders();
-  }, []);
+  }, [verified]);
+
+if (!verified) {
+return <AdminLogin section="orders" onSuccess={() => setVerified(true)} />;
+}
 
   const handleFieldChange = (orderId, productIndex, field, value) => {
     setPendingUpdates((prev) => ({

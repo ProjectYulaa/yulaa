@@ -31,14 +31,18 @@ import Help from "./pages/Help";
 import Chat from "./pages/Chat";
 
 // Admin Pages
+import YeahMeraSecurityPageHai from "./admin/yeahmerasecuritypagehai";
+import AdminLayout from "./admin/AdminLayout";
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminLogin from "./admin/AdminLogin";
+
 import ContactsAdmin from "./admin/pages/ContactsAdmin";
 import OrdersAdmin from "./admin/pages/OrdersAdmin";
 import ProductsAdmin from "./admin/pages/ProductsAdmin";
 import TestimonialsAdmin from "./admin/pages/TestimonialsAdmin";
 import UsersAdmin from "./admin/pages/UsersAdmin";
 import AdminChatDashboard from "./admin/AdminChatDashboard";
+import NotFound from "./admin/pages/NotFound";
 
 
 function App() {
@@ -114,15 +118,22 @@ function App() {
           <Route path="/addresses" element={<Addresses />} />
           <Route path="/security" element={<Security />} />
           <Route path="/my-queries" element={<MyQueries />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+
+          {/* Gate entry */}
+      <Route path="/yeahmerasecuritypagehai" element={<YeahMeraSecurityPageHai />} />
+      <Route path="/admin" element={<AdminLayout />}>
+      <Route index element={<AdminDashboard />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/contacts" element={<ContactsAdmin />} />
           <Route path="/admin/orders" element={<OrdersAdmin />} />
           <Route path="/admin/products" element={<ProductsAdmin />} />
           <Route path="/admin/testimonials" element={<TestimonialsAdmin />} />
           <Route path="/admin/users" element={<UsersAdmin />} />
-          <Route path="/admin/chatdashboard" element={<AdminChatDashboard />} />
-          
+          <Route path="/admin/chatdashboard" element={<AdminChatDashboard />} />  </Route>
+
+            {/* final catch-all */}
+      <Route path="*" element={<NotFound />} />
+
         </Routes>
       </div>
      </CartProvider> 

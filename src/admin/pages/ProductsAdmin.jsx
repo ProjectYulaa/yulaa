@@ -13,6 +13,7 @@ import { toast, Toaster } from "react-hot-toast";
 import "../../styles/Admin.css"; 
 import * as XLSX from "xlsx";
 import { useNavigate } from "react-router-dom";
+import AdminLogin from "../AdminLogin";
 
 const ProductsAdmin = () => {
   const [products, setProducts] = useState([]);
@@ -29,6 +30,7 @@ const ProductsAdmin = () => {
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [verified, setVerified] = useState(false);
 
   const fetchProducts = async () => {
     try {
@@ -44,8 +46,13 @@ const ProductsAdmin = () => {
   };
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+     if (!verified) return;                // 👈 wait for admin login
+  fetchProducts();
+ }, [verified]);
+
+if (!verified) {
+return <AdminLogin section="products" onSuccess={() => setVerified(true)} />;
+ }
 
   const uploadImage = async (file) => {
     const storageRef = ref(storage, `product_images/${file.name}`);

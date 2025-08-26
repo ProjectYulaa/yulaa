@@ -495,3 +495,17 @@ button {
 .order-card button:nth-of-type(1):hover {
   background: #c45a48; /* deeper terracotta */
 }
+
+.logout-btn {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.admin-btn.logout {
+  background: #d9534f; /* red */
+  color: white;
+}
+
+.admin-btn.logout:hover {
+  background: #c9302c;
+}
