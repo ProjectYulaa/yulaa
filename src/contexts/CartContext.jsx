@@ -1,92 +1,108 @@
 // src/contexts/CartContext.jsx
 import { createContext, useEffect, useState } from "react";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { onSnapshot, doc } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { setDoc } from "firebase/firestore";
+import { useAuthContext } from "./AuthContext";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const { user } = useAuthContext(); // already gated (admins -> null)
+  const [cartItems, setCartItems] = useState(() => {
+    // Initialize from localStorage for guests
+    try {
+      return JSON.parse(localStorage.getItem("cart")) || [];
+    } catch {
+      return [];
+    }
+  });
   const [cartCount, setCartCount] = useState(0);
   const [buyNowProduct, setBuyNowProduct] = useState(null);
 
-const updateCart = async (items, userId = null) => {
-    setCartItems(items);
-    const totalCount = items.reduce((acc, item) => acc + (item.quantity || 1), 0);
-    setCartCount(totalCount);
-
-    if (userId) {
-      // Logged in → update Firestore
-      await setDoc(doc(db, "carts", userId), { items });
-    } else {
-      // Guest → update localStorage
-      localStorage.setItem("cart", JSON.stringify(items));
-    }
-  };
-
+  // Keep cartCount in sync with items
   useEffect(() => {
-    const auth = getAuth();
+    const total = cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
+    setCartCount(total);
+  }, [cartItems]);
 
+  // Live sync: Firestore for logged-in customers, localStorage for guests
+  useEffect(() => {
     let unsubscribeFirestore = null;
-    let interval = null;
+    let onStorage = null;
 
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      if (user?.uid) {
-        const cartDocRef = doc(db, "carts", user.uid);
+    if (user?.uid) {
+      // When a user signs in, stop using localStorage
+      onStorage && window.removeEventListener("storage", onStorage);
 
-        // ✅ Enable real-time sync for logged-in user
-        unsubscribeFirestore = onSnapshot(cartDocRef, (docSnap) => {
-          if (docSnap.exists()) {
-            const data = docSnap.data();
-            const items = data.items || [];
+      const cartDocRef = doc(db, "carts", user.uid);
+      unsubscribeFirestore = onSnapshot(
+        cartDocRef,
+        (snap) => {
+          if (snap.exists()) {
+            const data = snap.data();
+            const items = Array.isArray(data?.items) ? data.items : [];
             setCartItems(items);
-
-            const totalCount = items.reduce(
-              (acc, item) => acc + (item.quantity || 1),
-              0
-            );
-            setCartCount(totalCount);
           } else {
             setCartItems([]);
-            setCartCount(0);
           }
-        }, (error) => {
+        },
+        (error) => {
           console.error("Live cart sync error:", error);
-        });
-      } else {
-        // ✅ Guest user fallback to localStorage polling
-        const syncGuestCart = () => {
-          const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-          setCartItems(storedCart);
-          const totalCount = storedCart.reduce(
-            (acc, item) => acc + (item.quantity || 1),
-            0
-          );
-          setCartCount(totalCount);
-        };
+        }
+      );
+    } else {
+      // Guest mode → read from localStorage and keep it in sync across tabs
+      const syncGuestCart = () => {
+        try {
+          const stored = JSON.parse(localStorage.getItem("cart")) || [];
+          setCartItems(stored);
+        } catch {
+          setCartItems([]);
+        }
+      };
 
-        syncGuestCart();
-
-        window.addEventListener("storage", (e) => {
-          if (e.key === "cart") syncGuestCart();
-        });
-
-        interval = setInterval(syncGuestCart, 500);
-      }
-    });
+      syncGuestCart();
+      onStorage = (e) => {
+        if (e.key === "cart") syncGuestCart();
+      };
+      window.addEventListener("storage", onStorage);
+    }
 
     return () => {
       if (unsubscribeFirestore) unsubscribeFirestore();
-      if (interval) clearInterval(interval);
-      unsubscribeAuth();
+      if (onStorage) window.removeEventListener("storage", onStorage);
     };
-  }, []);
+  }, [user]);
+
+  // Public updater: writes to Firestore if logged in, else localStorage
+  const updateCart = async (items) => {
+    setCartItems(items);
+
+    if (user?.uid) {
+      try {
+        await setDoc(doc(db, "carts", user.uid), { items }, { merge: true });
+      } catch (err) {
+        console.error("Failed to update cart in Firestore:", err);
+      }
+    } else {
+      try {
+        localStorage.setItem("cart", JSON.stringify(items));
+      } catch (err) {
+        console.error("Failed to persist guest cart:", err);
+      }
+    }
+  };
 
   return (
     <CartContext.Provider
-      value={{ cartItems, setCartItems, cartCount, setCartCount, updateCart, buyNowProduct, setBuyNowProduct }}
+      value={{
+        cartItems,
+        setCartItems,      // optional, but kept for compatibility
+        cartCount,
+        updateCart,
+        buyNowProduct,
+        setBuyNowProduct,
+      }}
     >
       {children}
     </CartContext.Provider>

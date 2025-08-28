@@ -1,22 +1,32 @@
 // src/components/TestimonialSlider.jsx
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/TestimonialSlider.css";
+import { collection, query, where, orderBy, limit, getDocs, onSnapshot } from "firebase/firestore";
 
 export default function TestimonialSlider() {
   const [tests, setTests] = useState([]);
 
-  useEffect(() => {
-    async function load() {
-      const q = await getDocs(collection(db, "testimonials"));
-      setTests(q.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+useEffect(() => {
+  async function load() {
+    try {
+      const q = query(
+        collection(db, "testimonials"),
+        where("published", "==", true),     // ✅ only allowed docs
+        orderBy("createdAt", "desc"),
+        limit(20)
+      );
+      const snap = await getDocs(q);
+      setTests(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    } catch (err) {
+      console.error("Testimonials load error:", err);
     }
-    load();
-  }, []);
+  }
+  load();
+}, []);
 
   const settings = {
     dots: true,

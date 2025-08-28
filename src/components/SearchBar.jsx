@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/SearchBar.css";
 
@@ -17,17 +17,20 @@ const SearchBar = ({ onSelect }) => {
   const searchBoxRef = useRef(null);
   const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const querySnapshot = await getDocs(collection(db, "products"));
-      const products = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const snap = await getDocs(collection(db, "products"));
+      const products = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       setAllProducts(products);
-    };
-    fetchProducts();
-  }, []);
+    } catch (err) {
+      console.error("Failed to load products:", err);
+      setAllProducts([]); // keep UI stable
+    }
+  };
+  fetchProducts();
+}, []);
+
 
   useEffect(() => {
     if (query.trim() === "") {
@@ -75,15 +78,14 @@ const SearchBar = ({ onSelect }) => {
   return (
     <div className="search-bar-container" ref={searchBoxRef}>
       <div className="search-bar">
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <select className="search-bar select"value={category} onChange={(e) => setCategory(e.target.value)}>
           {categories.map((cat) => (
             <option key={cat} value={cat}>
               {cat}
             </option>
           ))}
         </select>
-
-        <input
+        <input className="search-bar input"
           type="text"
           value={query}
           onChange={(e) => {

@@ -236,14 +236,17 @@
   }
 
   .slide-content h2 {
-    font-size: 1.2rem;
-  }
+ display:none;   }
 
   .slide-content p {
-    font-size: 0.85rem;
-  }
+ display:none;   }
 
   .slide-content a {
-    font-size: 0.9rem;
-  }
+display:none;  }
+}
+
+/* Optional: hide arrows entirely on very small screens */
+@media (max-width: 420px){
+  .universal-slider .slick-prev,
+  .universal-slider .slick-next{ display:none !important; }
 }

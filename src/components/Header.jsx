@@ -4,22 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
-// Contexts
-import { AuthContext } from "../contexts/AuthContext";
+import { useAuthContext } from "../contexts/AuthContext";
 import { CartContext } from "../contexts/CartContext";
-
-// Components
 import SearchBar from "./SearchBar";
 import LocationPopup from "./LocationPopup";
-
-// Styles
 import "../styles/Header.css";
-
-// Icons
 import { FaShoppingCart, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 
 export default function Header() {
-  const { user } = useContext(AuthContext);
+  const { user, isLoading } = useAuthContext(); // gated user from context
   const { cartCount } = useContext(CartContext);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,32 +24,30 @@ export default function Header() {
 
   const navigate = useNavigate();
 
-  // Lock body scroll when either mobile menu OR search overlay is open
+  // Lock body scroll for overlays
   useEffect(() => {
     document.body.style.overflow =
       mobileMenuOpen || mobileSearchOpen ? "hidden" : "auto";
   }, [mobileMenuOpen, mobileSearchOpen]);
 
-  // Location + delivery check (unchanged logic)
+  // Location + delivery check
   useEffect(() => {
     const location = JSON.parse(localStorage.getItem("deliveryPincode"));
     if (location) {
-      setLocationText(
-        `${location.city}, ${location.state} - ${location.pincode}`
-      );
+      setLocationText(`${location.city}, ${location.state} - ${location.pincode}`);
       setDeliveryAvailable(location.deliveryAvailable);
     }
   }, [locationOpen]);
 
-  // Signout (unchanged logic)
   const handleSignOut = async () => {
     await signOut(auth);
     navigate("/");
   };
 
-  // Sticky header (unchanged logic)
+  // Sticky header (guard against null)
   useEffect(() => {
     const header = document.querySelector(".header-container");
+    if (!header) return;
     const handleScroll = () => {
       if (window.scrollY > 50) {
         header.classList.add("sticky");
@@ -89,7 +80,6 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(true)}
           >
             <FaBars size={20} />
-  
           </button>
           <button
             className="search-toggle-btn"
@@ -133,9 +123,13 @@ export default function Header() {
                     <Link to="/youraccount" className="dropdown-item">
                       Your Account
                     </Link>
-                    <Link onClick={handleSignOut} className="dropdown-item">
+                    <button
+                      onClick={handleSignOut}
+                      className="dropdown-item"
+                      type="button"
+                    >
                       Sign Out
-                    </Link>
+                    </button>
                   </>
                 )}
               </div>
@@ -148,7 +142,7 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Desktop-only utilities (unchanged) */}
+        {/* Desktop-only utilities */}
         <button
           onClick={() => setLocationOpen(true)}
           className="delivery-btn desktop-only"
@@ -162,32 +156,37 @@ export default function Header() {
         </div>
 
         <div className="right-section desktop-nav">
-
-  {/* ✅ Desktop account dropdown */}
-  <div
-    className="account-dropdown desktop-account"
-    onMouseEnter={() => setIsHoveringAccount(true)}
-    onMouseLeave={() => setIsHoveringAccount(false)}
-  >
-    <button className="account-label">
-      Hello, {user ? user.displayName || user.email : "Sign In"} ▼
-    </button>
-    {isHoveringAccount && (
-      <div className="dropdown-menu">
-        {!user ? (
-          <>
-            <Link to="/signin" className="dropdown-item">Sign In</Link>
-            <Link to="/signup" className="dropdown-item">Sign Up</Link>
-          </>
-        ) : (
-          <>
-            <Link to="/youraccount" className="dropdown-item">Your Account</Link>
-            <Link onClick={handleSignOut} className="dropdown-item">Sign Out</Link>
-          </>
-        )}
-      </div>
-    )}
-  </div>
+          {/* Desktop account dropdown */}
+          <div
+            className="account-dropdown desktop-account"
+            onMouseEnter={() => setIsHoveringAccount(true)}
+            onMouseLeave={() => setIsHoveringAccount(false)}
+          >
+            <button className="account-label">
+              Hello, {user ? user.displayName || user.email : "Sign In"} ▼
+            </button>
+            {isHoveringAccount && (
+              <div className="dropdown-menu">
+                {!user ? (
+                  <>
+                    <Link to="/signin" className="dropdown-item">Sign In</Link>
+                    <Link to="/signup" className="dropdown-item">Sign Up</Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/youraccount" className="dropdown-item">Your Account</Link>
+                    <button
+                      onClick={handleSignOut}
+                      className="dropdown-item"
+                      type="button"
+                    >
+                      Sign Out
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
 
           <Link to="/cart" className="nav-link cart-icon" aria-label="Cart desktop">
             <FaShoppingCart size={18} />
@@ -230,7 +229,6 @@ export default function Header() {
               <FaTimes size={22} />
             </button>
 
-            {/* Title as requested */}
             <h3 className="mobile-menu-title">Menu</h3>
 
             <nav className="mobile-nav-links">
@@ -271,7 +269,7 @@ export default function Header() {
         </div>
       )}
 
-      {/* Location Popup (unchanged) */}
+      {/* Location Popup */}
       {locationOpen && (
         <LocationPopup onClose={() => setLocationOpen(false)} />
       )}
