@@ -1,34 +1,43 @@
-/* Universal Slider Wrapper */
+/* =======================
+   Universal Slider Wrapper
+   ======================= */
 .universal-slider {
   position: relative;
   width: 100%;
-  max-width: 1920px;   /* keeps things clean on very wide monitors */
+  max-width: 1920px;           /* keeps things clean on very wide monitors */
   margin: 0 auto;
   overflow: hidden;
+  padding-bottom: 0;           /* ensure no accidental space below */
 }
 
-/* Each Slide */
+/* =======================
+   Each Slide
+   ======================= */
 .slide-container {
   position: relative;
   width: 100%;
-  height: 80vh; /* Hero-like height */
+  height: 80vh;                /* base hero height (overridden below on desktop & mobile) */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-/* Slide Image */
-/* Ken Burns Effect on Slide Images */
+/* =======================
+   Slide Image + Ken Burns
+   ======================= */
+.slide-image,
 .slide-image img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.8);
   border-radius: 0;
-  
-  /* Animation */
+  filter: brightness(0.8);
+}
+
+.slide-image img {
   transform: scale(1);
   transition: transform 8s ease-out;
 }
@@ -38,27 +47,26 @@
   transform: scale(1.1); /* slight zoom */
 }
 
-
-/* Slide Content (text + button) */
-/* Slide Content Animations */
+/* =======================
+   Slide Content (text + button)
+   ======================= */
 .slide-content {
   position: absolute;
   top: 50%;
   left: 10%;
-  transform: translateY(-50%);
+  transform: translateY(-50%);     /* single, non-conflicting transform */
   color: #fff;
   max-width: 600px;
   z-index: 2;
   text-align: left;
   opacity: 0;
-  transform: translateY(20px);
   transition: all 1s ease-in-out;
 }
 
 /* Active slide content shows */
 .slick-active .slide-content {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(-50%);     /* keep vertical centering when shown */
 }
 
 /* Headline */
@@ -99,10 +107,12 @@
   transform: translateY(-3px);
 }
 
-
-/* Slick Dots (pagination) */
+/* =======================
+   Slick Dots (pagination)
+   ======================= */
 .universal-slider .slick-dots {
-  bottom: 20px;
+  position: absolute;
+  bottom: 12px;                      /* keep dots inside the slide */
 }
 
 .universal-slider .slick-dots li button:before {
@@ -116,7 +126,21 @@
   opacity: 1;
 }
 
-/* Slick Arrows */
+/* Kill Slick's extra bottom space when dots are used */
+.slick-dotted.slick-slider {
+  margin-bottom: 0 !important;
+}
+
+/* Ensure Slick internals fill height */
+.universal-slider .slick-list,
+.universal-slider .slick-track,
+.universal-slider .slide-container {
+  height: 100%;
+}
+
+/* =======================
+   Slick Arrows
+   ======================= */
 .universal-slider .slick-prev,
 .universal-slider .slick-next {
   z-index: 3;
@@ -137,50 +161,29 @@
   color: #fff;
 }
 
-/* Responsive Design */
+/* =======================
+   Responsive Design
+   ======================= */
 @media (max-width: 1200px) {
-  .slide-content h2 {
-    font-size: 2.5rem;
-  }
-  .slide-content p {
-    font-size: 1.1rem;
-  }
+  .slide-content h2 { font-size: 2.5rem; }
+  .slide-content p  { font-size: 1.1rem; }
 }
 
 @media (max-width: 992px) {
-  .slide-container {
-    height: 65vh;
-  }
-  .slide-content {
-    left: 8%;
-    max-width: 500px;
-  }
+  .slide-container { height: 65vh; }
+  .slide-content   { left: 8%; max-width: 500px; }
 }
 
 @media (max-width: 768px) {
-  .slide-container {
-    height: 60vh;
-  }
-  .slide-content {
-    left: 5%;
-    max-width: 80%;
-  }
-  .slide-content h2 {
-    font-size: 1.8rem;
-  }
-  .slide-content p {
-    font-size: 1rem;
-  }
-  .slide-content a {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
+  .slide-container { height: 60vh; }
+  .slide-content   { left: 5%; max-width: 80%; }
+  .slide-content h2 { font-size: 1.8rem; }
+  .slide-content p  { font-size: 1rem; }
+  .slide-content a  { padding: 10px 20px; font-size: 0.9rem; }
 }
 
 @media (max-width: 576px) {
-  .slide-container {
-    height: 50vh;
-  }
+  .slide-container { height: 50vh; }
   .slide-content {
     top: auto;
     bottom: 10%;
@@ -189,17 +192,11 @@
     text-align: center;
     max-width: 90%;
   }
-  .slide-content h2 {
-    font-size: 1.5rem;
-  }
-  .slide-content p {
-    font-size: 0.9rem;
-  }
+  .slide-content h2 { font-size: 1.5rem; }
+  .slide-content p  { font-size: 0.9rem; }
 }
 
-/* ========================= */
-/* 📱 Mobile Responsiveness  */
-/* ========================= */
+/* 📱 Mobile Responsiveness refinements */
 @media (max-width: 768px) {
   .slide-content {
     top: 60%;
@@ -208,16 +205,9 @@
     text-align: center;
     max-width: 90%;
   }
-
-  .slide-content h2 {
-    font-size: clamp(1.3rem, 4vw, 2rem);
-  }
-
-  .slide-content p {
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-  }
-
-  .slide-content a {
+  .slide-content h2 { font-size: clamp(1.3rem, 4vw, 2rem); }
+  .slide-content p  { font-size: clamp(0.9rem, 3vw, 1.1rem); }
+  .slide-content a  {
     display: block;
     width: 100%;
     padding: 14px 0;
@@ -226,27 +216,66 @@
   }
 }
 
-/* ========================= */
 /* 📱 Small Phones (<=480px) */
-/* ========================= */
 @media (max-width: 480px) {
-  .slide-content {
-    top: 65%;
-    padding: 0 10px;
-  }
-
-  .slide-content h2 {
- display:none;   }
-
-  .slide-content p {
- display:none;   }
-
-  .slide-content a {
-display:none;  }
+  .slide-content { top: 65%; padding: 0 10px; }
+  .slide-content h2 { display: none; }
+  .slide-content p  { display: none; }
+  .slide-content a  { display: none; }
 }
 
-/* Optional: hide arrows entirely on very small screens */
-@media (max-width: 420px){
+/* Hide arrows on very small screens */
+@media (max-width: 420px) {
   .universal-slider .slick-prev,
-  .universal-slider .slick-next{ display:none !important; }
+  .universal-slider .slick-next { display: none !important; }
+}
+
+/* =======================
+   Desktop height reductions
+   (place AFTER all smaller breakpoints so it wins)
+   ======================= */
+@media (min-width: 1024px) {
+  .slide-container {
+    /* shorter, bounded hero on desktops */
+    height: clamp(420px, 48vh, 620px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .slide-container { height: clamp(420px, 45vh, 580px); }
+}
+
+/* --- HARD DESKTOP HEIGHT OVERRIDE --- */
+@media (min-width: 1024px) {
+  /* Let the slide decide its own height */
+  .universal-slider,
+  .universal-slider .slick-list,
+  .universal-slider .slick-track {
+    height: auto !important;
+  }
+
+  /* Smaller hero on desktop */
+  .universal-slider .slide-container {
+    height: 42vh !important;        /* reduce screen usage */
+    max-height: 560px !important;    /* cap on tall monitors */
+    min-height: 360px;               /* don’t get too tiny */
+  }
+
+  /* Make the image fill the new (smaller) slide height */
+  .universal-slider .slide-image,
+  .universal-slider .slide-image img {
+    height: 100% !important;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  /* Keep dots tucked inside */
+  .universal-slider .slick-dots { bottom: 10px; }
+}
+
+/* If the slider sits in a padded hero section, remove extra space */
+.hero, .hero-section, .home-hero, .universal-slider-wrapper {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }

@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
@@ -218,56 +218,54 @@ export default function Header() {
       )}
 
       {/* MOBILE MENU DRAWER */}
-      {mobileMenuOpen && (
-        <div className="mobile-menu-overlay" role="dialog" aria-modal="true">
-          <div className="mobile-menu">
-            <button
-              className="close-btn"
-              aria-label="Close menu"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <FaTimes size={22} />
-            </button>
+    {/* MOBILE MENU DRAWER */}
+{mobileMenuOpen && (
+  <div
+    className="mobile-menu-overlay"
+    role="dialog"
+    aria-modal="true"
+    onClick={() => setMobileMenuOpen(false)}   // 🔹 close if overlay clicked
+  >
+    <div
+      className="mobile-menu"
+      onClick={(e) => e.stopPropagation()}     // 🔹 prevent close when clicking inside
+    >
+      <button
+        className="close-btn"
+        aria-label="Close menu"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        <FaTimes size={22} />
+      </button>
 
-            <h3 className="mobile-menu-title">Menu</h3>
+      <h3 className="mobile-menu-title">Menu</h3>
 
-            <nav className="mobile-nav-links">
-              <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                Home
-              </Link>
-              <Link to="/products" onClick={() => setMobileMenuOpen(false)}>
-                Products
-              </Link>
-              <Link to="/cart" onClick={() => setMobileMenuOpen(false)}>
-                Cart ({cartCount})
-              </Link>
-            </nav>
+      <nav className="mobile-nav-links">
+        <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+        <Link to="/products" onClick={() => setMobileMenuOpen(false)}>Products</Link>
+        <Link to="/cart" onClick={() => setMobileMenuOpen(false)}>Cart ({cartCount})</Link>
+          <Link to="/sale" onClick={() => setMobileMenuOpen(false)}>
+    <span>Sale</span>
+    <span className="menu-badge menu-badge--sale">SALE</span>
+  </Link>
+      </nav>
 
-            <div className="mobile-account">
-              {user ? (
-                <>
-                  <Link
-                    to="/youraccount"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Your Account
-                  </Link>
-                  <button onClick={handleSignOut}>Sign Out</button>
-                </>
-              ) : (
-                <>
-                  <Link to="/signin" onClick={() => setMobileMenuOpen(false)}>
-                    Sign In
-                  </Link>
-                  <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
-                    Sign Up
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      <div className="mobile-account">
+        {user ? (
+          <>
+            <Link to="/youraccount" onClick={() => setMobileMenuOpen(false)}>Your Account</Link>
+            <button onClick={handleSignOut}>Sign Out</button>
+          </>
+        ) : (
+          <>
+            <Link to="/signin" onClick={() => setMobileMenuOpen(false)}>Sign In</Link>
+            <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>Sign Up</Link>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+)}
 
       {/* Location Popup */}
       {locationOpen && (

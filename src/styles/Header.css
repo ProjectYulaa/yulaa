@@ -410,11 +410,11 @@
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.45);  /* softer dim */
   z-index: 2000;
   display: flex;
   justify-content: flex-end;
-  animation: fadeIn 0.3s ease forwards;
+  animation: fadeIn 0.25s ease forwards;
 }
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -425,13 +425,14 @@
 .mobile-menu {
   background: var(--color-background);
   width: 75%;
-  max-width: 300px;
+  max-width: 320px;
   height: 100%;
-  padding: 24px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  box-shadow: -6px 0 18px rgba(0,0,0,0.2);
   animation: slideIn 0.3s ease forwards;
 }
 @keyframes slideIn {
@@ -439,24 +440,34 @@
   to { transform: translateX(0); }
 }
 
-/* ===== Title ===== */
+/* ===== Close button + title ===== */
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
 .mobile-menu-title {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: 10px;
+  margin: 0 0 14px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* ===== Nav links ===== */
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .mobile-nav-links a {
   font-size: 1rem;
   font-weight: 500;
-  padding: 10px 14px;
+  padding: 12px 14px;
   border-radius: 10px;
   text-decoration: none;
   color: var(--color-text-primary);
@@ -470,24 +481,64 @@
 /* ===== Account section (bottom) ===== */
 .mobile-account {
   margin-top: auto;
-  padding-top: 20px;
+  padding-top: 16px;
   border-top: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 .mobile-account a,
 .mobile-account button {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--color-text-secondary);
   background: none;
   border: none;
   text-align: left;
-  padding: 6px 0;
   cursor: pointer;
+  padding: 8px 0;
   transition: color 0.2s ease;
 }
 .mobile-account a:hover,
 .mobile-account button:hover {
   color: var(--color-primary);
+}
+/* Make links lay out text on the left, badge on the right */
+.mobile-nav-links a {
+  display: flex;                /* NEW */
+  align-items: center;          /* NEW */
+  justify-content: space-between; /* NEW */
+  gap: 10px;                    /* NEW */
+}
+
+/* Badges */
+.menu-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+/* Variants — tuned to YULAA palette */
+.menu-badge--hot {
+  background: #e6f3ef;                /* soft green tint */
+  color: var(--color-primary);        /* your brand green/teal */
+}
+
+.menu-badge--sale {
+  background: #fff1e6;                /* soft peach tint */
+  color: #c25100;                     /* warm sale orange */
+}
+
+/* Optional extras you might want later */
+.menu-badge--new {
+  background: #eef2ff;
+  color: #3446a5;
+}
+.menu-badge--percent {
+  background: #fef9c3;
+  color: #7a6a00;
 }

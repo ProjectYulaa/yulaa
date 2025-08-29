@@ -1,31 +1,52 @@
 /* Product Slider Page */
 .products-page {
-  background-color: #faf9f7; /* Off-white background */
-  padding: 2rem;
+  background-color: #faf9f7;
+  padding: 0.5rem 0.5rem 0 0.5rem;   /* no bottom padding */
   font-family: 'Nunito', sans-serif;
+}
+
+/* Section wrapper – very tight separation */
+.product-section {
+  margin-bottom: 0.5rem;        /* was 2rem → much tighter */
+overflow: visible !important;   /* undo the auto overflow */
+  display: flow-root;             /* prevents <h2> margin-collapsing without scrollbars */
 }
 
 /* Section Titles */
 .product-section h2 {
   font-family: 'Merriweather', serif;
-  font-size: 1.8rem;
-  color: #e07a5f; /* Warm brown */
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #f2cc8f; /* Soft peach accent */
-  padding-bottom: 0.5rem;
+  font-size: 1.5rem;          /* slightly smaller for balance */
+  color: #e07a5f;
+  margin-bottom: 0.2rem;      /* very tight gap below heading */
+  border-bottom: 1px solid #f2cc8f;
+  padding-bottom: 0.2rem;     /* reduced padding under title */
 }
 
 /* Product Card */
 .product-card {
   background-color: #fffdfb;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
-  padding: 1rem;
-  margin: 0 0.5rem;
+  padding: 0.2rem;            /* leaner inner spacing */
+  margin: 0 0.25rem;          /* tighter horizontal gap */
 }
+
+/* Slider Overrides – compress vertical spacing */
+.slick-slide {
+  padding: 0.2rem;           /* very tight padding */
+}
+
+.slick-list {
+  margin: 0 -0.25rem;         /* balance reduced padding */
+}
+
+.slick-slider {
+  margin-bottom: 0.2rem !important;  /* almost no gap between sliders */
+}
+
 
 .product-card:hover {
   transform: translateY(-4px);
@@ -38,7 +59,7 @@
   height: 200px;
   object-fit: cover;
   border-radius: 12px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.2rem;
 }
 
 /* Wishlist Icon */
@@ -47,9 +68,9 @@
   top: 10px;
   right: 10px;
   color: #e07a5f; /* Terracotta */
-  font-size: 1.3rem;
+  font-size: 1rem;
   background: rgba(255, 255, 255, 0.9);
-  padding: 0.3rem;
+  padding: 0.2rem;
   border-radius: 50%;
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -62,31 +83,31 @@
 
 /* Product Details */
 .product-details {
-  padding-top: 0.5rem;
+  padding-top: 0.2rem;
 }
 
 .product-title {
   font-size: 1rem;
   font-weight: 600;
   color: #5a4634;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
 }
 
 .product-price {
   font-size: 1rem;
   color: #588157; /* Olive green for price */
-  margin: 0.4rem 0;
+  margin: 0.2rem 0;
 }
 
 /* Action Buttons */
 .product-actions {
-  margin-top: 0.8rem;
+  margin-top: 0.2rem;
 }
 
 .btn-cart {
   background-color: #e07a5f; /* Terracotta */
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 8px;
   border: none;
   font-weight: 500;
@@ -99,7 +120,7 @@
 
 /* Slider Overrides */
 .slick-slide {
-  padding: 0.5rem;
+  padding: 0.2rem;
 }
 
 .slick-prev,
@@ -110,7 +131,7 @@
 .slick-prev:before,
 .slick-next:before {
   color: #588157; /* Olive green */
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -123,3 +144,57 @@
     height: 180px;
   }
 }
+
+/* ========= TIGHTEN VERTICAL SPACE AROUND SLIDERS ========= */
+
+/* Page padding (smaller, no bottom) */
+.products-page {
+  padding: 0.2rem 0.2rem 0;
+}
+
+/* Section wrapper: prevent margin-collapsing and use small gaps */
+.product-section {
+  overflow: auto;                  /* stops h2 margin from collapsing */
+  padding-top: 0.15rem;            /* tiny breathing room above title */
+  margin: 0 0 0.75rem;             /* very small gap between sections */
+}
+
+/* First section: no extra gap at the top */
+.products-page .product-section:first-of-type {
+  margin-top: 0;
+}
+
+/* Section titles: tighter spacing */
+.product-section h2 {
+  margin: 0 0 0.5rem;              /* remove top margin; small bottom */
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid #f2cc8f;/* slimmer underline */
+  line-height: 1.2;
+}
+
+/* Kill Slick's extra margins/padding around each carousel */
+.product-section .slick-slider { margin: 0 !important; }
+.product-section .slick-list   { padding: 0 !important; margin: 0 -0.25rem; }
+.product-section .slick-track  { margin: 0; }
+
+/* Unify slide gutter (wins over earlier duplicate rules) */
+.product-section .slick-slide { padding: 0.25rem !important; }
+
+/* Cards: keep them tight horizontally only (no vertical margins) */
+.product-card { margin: 0 0.25rem; padding: 0.25rem; }
+
+/* Optional: last section – remove any trailing space under the page */
+.products-page > .product-section:last-of-type { margin-bottom: 0.25rem; }
+
+.hero, .home-hero, .top-banner { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+
+/* ✅ Hide ratings (stars + number) on mobile */
+@media (max-width: 768px) {
+  .product-details .flex.items-center.gap-1 {
+    display: none !important;
+  }
+}
+
+/* Extra safety: hide any scrollbar tracks some browsers still render */
+.product-section::-webkit-scrollbar { height: 0 !important; width: 0 !important; }
+.product-section { scrollbar-width: none; -ms-overflow-style: none; }

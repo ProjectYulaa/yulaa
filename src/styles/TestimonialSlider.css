@@ -1,80 +1,89 @@
 /* src/styles/TestimonialSlider.css */
 
 .testimonial-slider {
-  background-color: #faf9f7; /* soft off-white background */
-  padding: 4rem 2rem;
+  background-color: #faf9f7; 
   text-align: center;
   font-family: 'Lora', serif;
+  margin: 0;                 /* no extra margins */
 }
 
+/* Section title */
 .section-title {
   font-family: 'Merriweather', serif;
   font-size: 2rem;
-  margin-bottom: 2.5rem;
-  color: #588157; /* Olive Green */
+  margin: 0 0 1rem 0;        /* was margin-bottom: 2.5rem */
+  color: #588157;
   letter-spacing: 0.5px;
 }
 
+/* Testimonial card */
 .testimonial-card {
-  background-color: #f4f1de; /* cream accent */
-  padding: 2rem;
-  max-width: 1000px;
+  background-color: #f4f1de;
   margin: 0 auto;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 1.2rem 1rem;       /* ensures text doesn’t hug edges */
 }
 
+/* Card hover */
 .testimonial-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
 }
 
+/* Testimonial text */
 .testimonial-card p {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.6;
   font-style: italic;
   color: #444;
   position: relative;
-  padding: 0 1.5rem;
+  padding: 0 1.2rem;
+  margin: 0;                 /* remove extra spacing */
 }
 
+/* Quotes */
 .testimonial-card p::before {
   content: "“";
-  font-size: 3rem;
-  color: #e07a5f; /* terracotta */
+  font-size: 2.5rem;
+  color: #e07a5f;
   position: absolute;
   left: 0;
-  top: -10px;
+  top: -5px;
 }
 
 .testimonial-card p::after {
   content: "”";
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #e07a5f;
   position: absolute;
   right: 0;
-  bottom: -20px;
+  bottom: -10px;
 }
 
+/* Name + Location */
 .testimonial-card h4 {
-  margin-top: 1rem;
+  margin-top: 0.8rem;        /* was 1rem */
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #588157;
 }
 
-/* Slick carousel overrides for soft style */
+/* Slick carousel overrides */
+.slick-slider {
+  margin: 0 !important;      /* kill default bottom margin */
+}
+.slick-dots { margin-top: 0.6rem; } /* keep dots close */
 .slick-dots li button:before {
   font-size: 12px;
-  color: #e07a5f; /* terracotta */
+  color: #e07a5f;
   opacity: 0.5;
 }
-
 .slick-dots li.slick-active button:before {
-  color: #588157; /* olive */
+  color: #588157;
   opacity: 1;
 }
 
@@ -82,14 +91,24 @@
 .testimonial-card {
   animation: fadeIn 0.8s ease forwards;
 }
-
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 🚫 Remove ALL top spacing from testimonial section */
+.testimonial-slider {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* 🚫 Ensure the section title doesn’t add extra gap */
+.testimonial-slider .section-title {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.testimonial-slider {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }

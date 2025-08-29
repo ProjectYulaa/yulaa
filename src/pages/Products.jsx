@@ -1,5 +1,6 @@
 // src/pages/Products.jsx
 import React, { useEffect, useState, useContext, useMemo } from "react";
+
 import {
   collection,
   getDocs,
@@ -272,7 +273,7 @@ const Products = () => {
   aria-expanded={filterOpen}
   aria-controls="filters"
 >
-  <FaFilter /> Filters
+  <FaFilter /> Add Filters
 </button>
 
             <select
